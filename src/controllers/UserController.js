@@ -44,7 +44,7 @@ const findByName = (name) => {
     setTimeout(() => {
       const userFound = users.find((user) => user.name === name);
       resolve(userFound);
-    });
+    }, 2000);
   });
 };
 
