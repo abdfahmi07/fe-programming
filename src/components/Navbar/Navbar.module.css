@@ -1,0 +1,46 @@
+/* Small Screen */
+.container {
+  background-color: #4895ef;
+  padding: 1rem;
+  color: #fff;
+}
+
+.navbar__brand {
+  margin-bottom: 1rem;
+}
+
+.navbar__list {
+  list-style: none;
+}
+
+.navbar__item {
+  margin-bottom: 1rem;
+}
+
+/* Medium Screen */
+@media (min-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar__brand {
+    margin-bottom: 0;
+  }
+
+  .navbar__list {
+    display: flex;
+  }
+
+  .navbar__item {
+    margin: 0 1rem;
+  }
+}
+
+/* Large Screen */
+@media (min-width: 992px) {
+  .container {
+    padding: 1rem 6rem;
+  }
+}
