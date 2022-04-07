@@ -12,7 +12,13 @@
 .movie__title {
   color: #4895ef;
   font-size: 1.95rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.275rem;
+}
+
+.movie__type {
+  font-style: italic;
+  color: #64748b;
+  margin-bottom: 0.275rem;
 }
 
 .movie__date {
