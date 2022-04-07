@@ -37,6 +37,12 @@
   border-radius: 10px;
   background-color: #4895ef;
   color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero__button:hover {
+  background-color: #2c73c4;
 }
 
 .hero__right {

@@ -3,7 +3,7 @@ const data = [
     id: "tt10872600",
     title: "Spider-Man",
     year: "2021",
-    type: "Movie",
+    type: "movie",
     poster:
       "https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_SX300.jpg",
   },
@@ -43,7 +43,7 @@ const data = [
     id: "tt8097030",
     title: "Turning Red",
     year: "2022",
-    yype: "movie",
+    type: "movie",
     poster:
       "https://m.media-amazon.com/images/M/MV5BNjY0MGEzZmQtZWMxNi00MWVhLWI4NWEtYjQ0MDkyYTJhMDU0XkEyXkFqcGdeQXVyODc0OTEyNDU@._V1_SX300.jpg",
   },
