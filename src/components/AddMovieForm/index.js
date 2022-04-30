@@ -1,70 +1,93 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
-import Alert from "../Alert/Alert";
-import styles from "./AddMovieForm.module.css";
+import Alert from "../Alert";
+import styles from "./style.module.css";
 
 function AddMovieForm(props) {
   const { movies, setMovies } = props;
 
-  const [title, setTitle] = useState("");
-  const [year, setYear] = useState("");
-  const [type, setType] = useState("");
-  const [poster, setPoster] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [year, setYear] = useState("");
+  // const [type, setType] = useState("");
+  // const [poster, setPoster] = useState("");
+
+  const [formData, setFormData] = useState({
+    title: "",
+    year: "",
+    type: "",
+    poster: "",
+  });
 
   const [isTitleError, setIsTitleError] = useState(false);
   const [isYearError, setIsYearError] = useState(false);
   const [isTypeError, setIsTypeError] = useState(false);
   const [isPosterError, setIsPosterError] = useState(false);
 
-  function handleTitle(e) {
-    setTitle(e.target.value);
+  const { title, year, type, poster } = formData;
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   }
 
-  function handleYear(e) {
-    setYear(e.target.value);
-  }
-
-  function handleType(e) {
-    setType(e.target.value);
-  }
-
-  function handlePoster(e) {
-    setPoster(e.target.value);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
+  function validate() {
     if (title === "") {
       setIsTitleError(true);
+      return false;
     } else if (year === "") {
       setIsTitleError(false);
       setIsYearError(true);
+      return false;
     } else if (type === "") {
       setIsYearError(false);
       setIsTypeError(true);
+      return false;
     } else if (poster === "") {
       setIsTypeError(false);
       setIsPosterError(true);
+      return false;
     } else {
-      const movie = {
-        id: nanoid(),
-        title,
-        year,
-        type,
-        poster,
-      };
-
-      setMovies([...movies, movie]);
-      setTitle("");
-      setYear("");
-      setType("");
-      setPoster("");
       setIsTitleError(false);
       setIsYearError(false);
       setIsTypeError(false);
       setIsPosterError(false);
+      return true;
     }
   }
+
+  function addMovie() {
+    const movie = {
+      id: nanoid(),
+      title,
+      year,
+      type,
+      poster,
+    };
+
+    setMovies([...movies, movie]);
+
+    return true;
+  }
+
+  function resetForm() {
+    setFormData({
+      title: "",
+      year: "",
+      type: "",
+      poster: "",
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    validate() && addMovie() && resetForm();
+  }
+
   return (
     <div className={styles.container}>
       <section className={styles.movie__form}>
@@ -86,8 +109,9 @@ function AddMovieForm(props) {
                 id="title"
                 className={styles.form__input}
                 type="text"
+                name="title"
                 value={title}
-                onChange={handleTitle}
+                onChange={handleChange}
                 placeholder="Movie Title"
               />
               {isTitleError && <Alert>Title Wajib Diisi</Alert>}
@@ -100,9 +124,10 @@ function AddMovieForm(props) {
                 id="year"
                 className={styles.form__input}
                 type="number"
+                name="year"
                 min="1900"
                 value={year}
-                onChange={handleYear}
+                onChange={handleChange}
                 placeholder="Release Year"
               />
               {isYearError && <Alert>Year Wajib Diisi</Alert>}
@@ -116,7 +141,7 @@ function AddMovieForm(props) {
                 id="type"
                 name="type"
                 value={type}
-                onChange={handleType}
+                onChange={handleChange}
               >
                 <option value="">Select Type of Film</option>
                 <option value="action">Action</option>
@@ -135,8 +160,9 @@ function AddMovieForm(props) {
                 id="poster"
                 className={styles.form__input}
                 type="text"
+                name="poster"
                 value={poster}
-                onChange={handlePoster}
+                onChange={handleChange}
                 placeholder="URL Poster"
               />
               {isPosterError && <Alert>Poster Wajib Diisi</Alert>}

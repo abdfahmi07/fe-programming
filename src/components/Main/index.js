@@ -1,7 +1,7 @@
 import { useState } from "react";
-import AddMovieForm from "../AddMovieForm/AddMovieForm";
-import Hero from "../Hero/Hero";
-import Movies from "../Movies/Movies";
+import AddMovieForm from "../AddMovieForm";
+import Hero from "../Hero";
+import Movies from "../Movies";
 import data from "../../utils/constant/data";
 
 function Main() {

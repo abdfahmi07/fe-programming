@@ -1,4 +1,4 @@
-import styles from "./Alert.module.css";
+import styles from "./style.module.css";
 
 function Alert(props) {
   const { children } = props;

@@ -17,6 +17,10 @@
   margin-bottom: 1rem;
 }
 
+.navbar__item a {
+  color: #fff;
+}
+
 /* Medium Screen */
 @media (min-width: 768px) {
   .navbar {

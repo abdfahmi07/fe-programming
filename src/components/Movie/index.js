@@ -1,4 +1,4 @@
-import styles from "./Movie.module.css";
+import styles from "./style.module.css";
 
 function Movie(props) {
   // Desctructing props

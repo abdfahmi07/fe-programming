@@ -1,5 +1,5 @@
-import styles from "./Movies.module.css";
-import Movie from "../Movie/Movie";
+import styles from "./style.module.css";
+import Movie from "../Movie";
 import { nanoid } from "nanoid";
 
 function Movies(props) {
