@@ -26,9 +26,12 @@
   padding: 1rem;
 }
 
-.form__group {
+.input__group {
   display: flex;
   flex-direction: column;
+}
+
+.form__group {
   margin-bottom: 1rem;
 }
 

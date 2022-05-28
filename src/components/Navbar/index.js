@@ -1,34 +1,34 @@
 import { Link } from "react-router-dom";
-import styles from "./style.module.css";
+import StyledNavbar from "./index.styled";
 
 function Navbar() {
   return (
-    <div className={styles.container}>
-      <nav className={styles.navbar}>
-        <div>
-          <h1 className={styles.navbar__brand}>Movie App</h1>
+    <StyledNavbar bgColor="primary">
+      <nav className="navbar">
+        <div className="navbar__left">
+          <h1 className="navbar__brand">Movie App</h1>
         </div>
-        <div>
-          <ul className={styles.navbar__list}>
-            <li className={styles.navbar__item}>
+        <div className="navbar__right">
+          <ul className="navbar__list">
+            <li className="navbar__item">
               <Link to="/">Home</Link>
             </li>
-            <li className={styles.navbar__item}>
+            <li className="navbar__item">
               <Link to="/movie/create">Add Movie</Link>
             </li>
-            <li className={styles.navbar__item}>
+            <li className="navbar__item">
               <Link to="/movie/popular">Popular</Link>
             </li>
-            <li className={styles.navbar__item}>
+            <li className="navbar__item">
               <Link to="/movie/now">Now Playing</Link>
             </li>
-            <li className={styles.navbar__item}>
+            <li className="navbar__item">
               <Link to="/movie/top">Top Rated</Link>
             </li>
           </ul>
         </div>
       </nav>
-    </div>
+    </StyledNavbar>
   );
 }
 

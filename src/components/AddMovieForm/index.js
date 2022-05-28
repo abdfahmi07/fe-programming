@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import Alert from "../Alert";
+import Button from "../ui/Button";
 import styles from "./style.module.css";
 
 function AddMovieForm(props) {
@@ -101,7 +102,7 @@ function AddMovieForm(props) {
         <div className={styles.movie__form__right}>
           <h2 className={styles.movie__form__title}>Add Movie</h2>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <div className={styles.form__group}>
+            <div className={`${styles.form__group} ${styles.input__group}`}>
               <label className={styles.form__label} htmlFor="title">
                 Title
               </label>
@@ -116,7 +117,7 @@ function AddMovieForm(props) {
               />
               {isTitleError && <Alert>Title Wajib Diisi</Alert>}
             </div>
-            <div className={styles.form__group}>
+            <div className={`${styles.form__group} ${styles.input__group}`}>
               <label className={styles.form__label} htmlFor="year">
                 Year
               </label>
@@ -132,7 +133,7 @@ function AddMovieForm(props) {
               />
               {isYearError && <Alert>Year Wajib Diisi</Alert>}
             </div>
-            <div className={styles.form__group}>
+            <div className={`${styles.form__group} ${styles.input__group}`}>
               <label className={styles.form__label} htmlFor="type">
                 Type
               </label>
@@ -152,7 +153,7 @@ function AddMovieForm(props) {
               </select>
               {isTypeError && <Alert>Type Wajib Diisi</Alert>}
             </div>
-            <div className={styles.form__group}>
+            <div className={`${styles.form__group} ${styles.input__group}`}>
               <label className={styles.form__label} htmlFor="poster">
                 Poster
               </label>
@@ -168,7 +169,10 @@ function AddMovieForm(props) {
               {isPosterError && <Alert>Poster Wajib Diisi</Alert>}
             </div>
             <div className={styles.form__group}>
-              <button className={styles.form__button}>Submit</button>
+              <Button variant="primary" size="lg" full>
+                Submit
+              </Button>
+              {/* <button className={styles.form__button}>Submit</button> */}
             </div>
           </form>
         </div>

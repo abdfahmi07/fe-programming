@@ -1,6 +1,7 @@
 import styles from "./style.module.css";
 import Movie from "../Movie";
 import { nanoid } from "nanoid";
+import Button from "../ui/Button";
 
 function Movies(props) {
   const { movies, setMovies } = props;
@@ -32,7 +33,8 @@ function Movies(props) {
           ))}
         </div>
         {/* Menambahkan event onClick */}
-        <button onClick={tambahFilm}>Add Movie</button>
+        <Button onClick={tambahFilm}>Add Movie</Button>
+        {/* <button onClick={tambahFilm}>Add Movie</button> */}
       </section>
     </div>
   );
