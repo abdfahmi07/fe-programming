@@ -54,8 +54,8 @@ const StyledHero = styled.div`
 
       .hero__left {
         order: 1;
-        flex-basis: 40%;
-        padding-right: 1rem;
+        flex-basis: 50%;
+        padding-right: 2.5rem;
 
         .hero__title {
           margin: 0.5rem 0;
@@ -68,7 +68,7 @@ const StyledHero = styled.div`
 
       .hero__right {
         order: 2;
-        flex-basis: 60%;
+        flex-basis: 50%;
 
         .hero__image {
           float: right;
