@@ -2,11 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import StyledHero from "./index.styled";
+import ENDPOINTS from "../../utils/constant/endpoints";
 
 function Hero(props) {
   const { endpoint } = props;
   const [movie, setMovie] = useState("");
-  const API_KEY = process.env.REACT_APP_API_KEY;
 
   const movieGenres =
     movie && movie.genres.map((genre) => genre.name).join(", ");
@@ -17,22 +17,18 @@ function Hero(props) {
     getDetailMovie();
   }, []);
 
-  async function getTrendingMovies() {
-    const URL = `https://api.themoviedb.org/3/${endpoint}?api_key=${API_KEY}${
-      endpoint !== "/movie/latest" ? "&region=ID" : ""
-    }`;
-    const response = await axios(URL);
+  async function getBannerMovies() {
+    const response = await axios(endpoint);
     const randomIdx = Math.floor(Math.random() * response.data.results.length);
 
     return response.data.results[randomIdx];
   }
 
   async function getDetailMovie() {
-    const trendingMovie = await getTrendingMovies();
-    const movieId = trendingMovie.id;
+    const bannerMovie = await getBannerMovies();
+    const movieId = bannerMovie.id;
 
-    const URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&append_to_response=videos`;
-    const response = await axios(URL);
+    const response = await axios(ENDPOINTS.DETAIL(movieId));
 
     setMovie(response.data);
   }
@@ -51,7 +47,7 @@ function Hero(props) {
             href={movieTrailer}
             target="_blank"
           >
-            Watch
+            Watch Trailer
           </Button>
         </div>
         <div className="hero__right">

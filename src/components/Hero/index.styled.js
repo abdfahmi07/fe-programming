@@ -43,7 +43,6 @@ const StyledHero = styled.div`
 
   @media screen and (min-width: 992px) {
     max-width: 1200px;
-    margin: 3rem auto;
 
     .hero {
       margin: 0 1rem;
