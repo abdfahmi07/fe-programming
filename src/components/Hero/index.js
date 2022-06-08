@@ -34,7 +34,7 @@ function Hero(props) {
   }
 
   return (
-    <StyledHero>
+    <StyledHero colorSchema="primary">
       <section className="hero">
         <div className="hero__left">
           <h2 className="hero__title">{movie.title}</h2>

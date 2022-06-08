@@ -9,11 +9,11 @@ function Main() {
   const [movies, setMovies] = useState(data);
 
   return (
-    <main>
+    <>
       <Hero endpoint={ENDPOINTS.HERO} />
       <Movies movies={movies} setMovies={setMovies} title="Latest Movies" />
       <AddMovieForm movies={movies} setMovies={setMovies} />
-    </main>
+    </>
   );
 }
 

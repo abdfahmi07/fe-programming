@@ -17,13 +17,17 @@ const StyledDetailMovie = styled.div`
   h2 {
     font-size: 2.44rem;
     margin-bottom: 0.5rem;
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ colorSchema, theme }) =>
+      theme.colors[colorSchema] || theme.colors.primary};
   }
 
   h3 {
     font-size: 1.59rem;
     margin-bottom: 0.5rem;
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ colorSchema, theme }) =>
+      colorSchema === "secondary"
+        ? theme.colors.primary
+        : theme.colors.secondary};
   }
 
   p {

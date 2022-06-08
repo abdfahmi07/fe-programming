@@ -25,26 +25,24 @@ function DetailMovie() {
   }
 
   return (
-    <>
-      <StyledDetailMovie>
-        <div className="poster">
-          <img
-            src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
-            alt={movie.title}
-          />
-        </div>
-        <div className="info">
-          <h2>
-            {movie.title} {`(${movieReleaseYear})`}
-          </h2>
-          <h3>{movieGenres}</h3>
-          <p>{movie.overview}</p>
-          <Button as="a" href={movieTrailer} target="_blank">
-            Watch Trailer
-          </Button>
-        </div>
-      </StyledDetailMovie>
-    </>
+    <StyledDetailMovie colorSchema="primary">
+      <div className="poster">
+        <img
+          src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+          alt={movie.title}
+        />
+      </div>
+      <div className="info">
+        <h2>
+          {movie.title} {`(${movieReleaseYear})`}
+        </h2>
+        <h3>{movieGenres}</h3>
+        <p>{movie.overview}</p>
+        <Button as="a" href={movieTrailer} target="_blank">
+          Watch Trailer
+        </Button>
+      </div>
+    </StyledDetailMovie>
   );
 }
 

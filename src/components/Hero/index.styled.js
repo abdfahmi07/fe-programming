@@ -13,13 +13,17 @@ const StyledHero = styled.div`
       margin-bottom: 1rem;
 
       .hero__title {
-        color: #4895ef;
+        color: ${({ colorSchema, theme }) =>
+          theme.colors[colorSchema] || theme.colors.primary};
         margin: 1rem 0 0.5rem 0;
         font-size: 2.44rem;
       }
 
       .hero__genre {
-        color: #b5179e;
+        color: ${({ colorSchema, theme }) =>
+          colorSchema === "secondary"
+            ? theme.colors.primary
+            : theme.colors.secondary};
         margin-bottom: 1rem;
         font-size: 1.59rem;
       }
