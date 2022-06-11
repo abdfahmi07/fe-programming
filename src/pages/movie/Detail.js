@@ -1,13 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import DetailMovie from "../../components/DetailMovie";
 import Movies from "../../components/Movies";
+import { updateMovie } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
 
 function Detail() {
   const { id } = useParams();
-  const [movies, setMovies] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,14 +18,13 @@ function Detail() {
 
   async function getRecommendationMovies() {
     const response = await axios(ENDPOINTS.RECOMMENDATION(id));
-
-    setMovies(response.data.results);
+    dispatch(updateMovie(response.data.results));
   }
 
   return (
     <>
       <DetailMovie />
-      <Movies movies={movies} title="Recommendation Movies" />
+      <Movies title="Recommendation Movies" />
     </>
   );
 }
