@@ -51,8 +51,8 @@ const StyledDetailMovie = styled.div`
       flex-wrap: wrap;
       gap: 15px;
       img {
-        border-radius: 10px;
-        max-width: 15%;
+        border-radius: 7px;
+        max-width: 40px;
       }
     }
   }
@@ -99,6 +99,7 @@ const StyledDetailMovie = styled.div`
     .watch__providers {
       .providers {
         img {
+          border-radius: 10px;
           max-width: 50px;
         }
       }

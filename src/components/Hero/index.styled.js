@@ -33,6 +33,14 @@ const StyledHero = styled.div`
         color: #64748b;
         margin-bottom: 2rem;
       }
+
+      .hero__btn__trailer {
+        margin-right: 10px;
+      }
+
+      .hero__icon {
+        margin-right: 10px;
+      }
     }
 
     .hero__right {
@@ -72,14 +80,6 @@ const StyledHero = styled.div`
 
         .hero__description {
           margin-bottom: 2rem;
-        }
-
-        .hero__btn__trailer {
-          margin-right: 10px;
-        }
-
-        .hero__icon {
-          margin-right: 10px;
         }
       }
 

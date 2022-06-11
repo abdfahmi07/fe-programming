@@ -9,8 +9,11 @@ const StyledNavbar = styled.div`
 
   .navbar {
     .navbar__left {
-      .navbar__brand {
-        margin-bottom: 1rem;
+      a {
+        color: #fff;
+        .navbar__brand {
+          margin-bottom: 1rem;
+        }
       }
     }
 
@@ -35,8 +38,10 @@ const StyledNavbar = styled.div`
       align-items: center;
 
       .navbar__left {
-        .navbar__brand {
-          margin-bottom: 0;
+        a {
+          .navbar__brand {
+            margin-bottom: 0;
+          }
         }
       }
 

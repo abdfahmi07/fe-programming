@@ -6,7 +6,9 @@ function Navbar() {
     <StyledNavbar bgColor="primary">
       <nav className="navbar">
         <div className="navbar__left">
-          <h1 className="navbar__brand">Movie App</h1>
+          <Link to="/">
+            <h1 className="navbar__brand">Movie App</h1>
+          </Link>
         </div>
         <div className="navbar__right">
           <ul className="navbar__list">

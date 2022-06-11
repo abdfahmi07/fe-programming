@@ -1,18 +1,22 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addMovie } from "../../features/moviesSlice";
 import Alert from "../Alert";
 import Button from "../ui/Button";
 import StyledAddMovieForm from "./index.styled";
+import FormLogo from "../../assets/add-movie.svg";
 
-function AddMovieForm(props) {
-  const { movies, setMovies } = props;
+function AddMovieForm() {
+  const dispatch = useDispatch();
+  const navigation = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     year: "",
     type: "",
     poster: "",
   });
-
   const [isTitleError, setIsTitleError] = useState(false);
   const [isYearError, setIsYearError] = useState(false);
   const [isTypeError, setIsTypeError] = useState(false);
@@ -54,7 +58,7 @@ function AddMovieForm(props) {
     }
   }
 
-  function addMovie() {
+  function submitMovie() {
     const movie = {
       id: nanoid(),
       title,
@@ -63,7 +67,8 @@ function AddMovieForm(props) {
       poster,
     };
 
-    setMovies([...movies, movie]);
+    dispatch(addMovie(movie));
+    navigation("/");
 
     return true;
   }
@@ -80,7 +85,7 @@ function AddMovieForm(props) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    validate() && addMovie() && resetForm();
+    validate() && submitMovie() && resetForm();
   }
 
   return (
@@ -89,7 +94,7 @@ function AddMovieForm(props) {
         <div className="movie__form__left">
           <img
             className="movie__form__image"
-            src="https://picsum.photos/600/400"
+            src={FormLogo}
             alt="Form Thumbnail"
           />
         </div>

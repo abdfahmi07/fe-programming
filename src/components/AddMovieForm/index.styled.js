@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledAddMovieForm = styled.div`
-  margin: 1rem;
+  margin: 3rem 1rem 1rem 1rem;
 
   .movie__form {
     display: flex;
@@ -57,22 +57,23 @@ const StyledAddMovieForm = styled.div`
 
   @media (min-width: 992px) {
     max-width: 1200px;
-    margin: 3rem auto;
+    margin: 6rem auto;
     padding: 0 2rem;
 
     .movie__form {
       flex-direction: row;
       align-items: center;
+      gap: 5%;
 
       .movie__form__left {
-        flex-basis: 60%;
+        flex-basis: 50%;
         .movie__form__image {
           display: block;
         }
       }
 
       .movie__form__right {
-        flex-basis: 40%;
+        flex-basis: 45%;
 
         .movie__form__title {
           font-size: 2.375rem;
