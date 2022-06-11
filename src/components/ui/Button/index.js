@@ -1,16 +1,25 @@
 import styled, { css } from "styled-components";
 
 const Button = styled.button`
+  display: inline-block;
   font-family: "Poppins", sans-serif;
   padding: 0.8rem 2rem;
   border-radius: 5px;
   cursor: pointer;
   color: #fff;
-  border: none;
 
-  /* Access props variant */
-  background-color: ${({ variant, theme }) =>
-    theme.colors[variant] || theme.colors.primary};
+  ${({ colorSchema, variant, theme }) =>
+    variant === "outline"
+      ? css`
+          background-color: transparent;
+          border: 1px solid ${theme.colors[colorSchema] || theme.colors.primary};
+          color: ${theme.colors[colorSchema] || theme.colors.primary};
+        `
+      : css`
+          background-color: ${theme.colors[colorSchema] ||
+          theme.colors.primary};
+          border: none;
+        `}
 
   ${({ full }) =>
     full &&

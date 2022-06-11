@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "../ui/Button";
 import StyledHero from "./index.styled";
 import ENDPOINTS from "../../utils/constant/endpoints";
+import { Link } from "react-router-dom";
 
 function Hero(props) {
   const { endpoint } = props;
@@ -41,14 +43,24 @@ function Hero(props) {
           <h3 className="hero__genre">{movieGenres}</h3>
           <p className="hero__description">{movie.overview}</p>
           <Button
-            variant="primary"
+            className="hero__btn__trailer"
+            colorSchema="primary"
             size="md"
             as="a"
             href={movieTrailer}
             target="_blank"
           >
+            <FontAwesomeIcon className="hero__icon" icon="fa-solid fa-play" />
             Watch Trailer
           </Button>
+          <Link to={`/movie/${movie.id}`}>
+            <Button colorSchema="primary" variant="outline" size="md">
+              <FontAwesomeIcon
+                icon="fa-solid fa-info"
+                style={{ color: "#4895ef" }}
+              />
+            </Button>
+          </Link>
         </div>
         <div className="hero__right">
           <img

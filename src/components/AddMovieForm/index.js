@@ -163,7 +163,7 @@ function AddMovieForm(props) {
               {isPosterError && <Alert>Poster Wajib Diisi</Alert>}
             </div>
             <div className="form__group">
-              <Button variant="primary" size="lg" full>
+              <Button colorSchema="primary" size="lg" full>
                 Submit
               </Button>
             </div>

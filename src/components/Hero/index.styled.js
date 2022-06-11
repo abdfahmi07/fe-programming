@@ -16,7 +16,7 @@ const StyledHero = styled.div`
         color: ${({ colorSchema, theme }) =>
           theme.colors[colorSchema] || theme.colors.primary};
         margin: 1rem 0 0.5rem 0;
-        font-size: 2.44rem;
+        font-size: 1.75rem;
       }
 
       .hero__genre {
@@ -25,12 +25,13 @@ const StyledHero = styled.div`
             ? theme.colors.primary
             : theme.colors.secondary};
         margin-bottom: 1rem;
-        font-size: 1.59rem;
+        font-size: 1.3125rem;
       }
 
       .hero__description {
+        text-align: justify;
         color: #64748b;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
       }
     }
 
@@ -61,11 +62,24 @@ const StyledHero = styled.div`
         padding-right: 2.5rem;
 
         .hero__title {
+          font-size: 2.375rem;
           margin: 0.5rem 0;
+        }
+
+        .hero__genre {
+          font-size: 1.5rem;
         }
 
         .hero__description {
           margin-bottom: 2rem;
+        }
+
+        .hero__btn__trailer {
+          margin-right: 10px;
+        }
+
+        .hero__icon {
+          margin-right: 10px;
         }
       }
 

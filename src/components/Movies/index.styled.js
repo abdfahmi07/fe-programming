@@ -11,7 +11,7 @@ const StyledMovies = styled.div`
 
   .movies__title {
     margin-bottom: 1rem;
-    font-size: 2.44rem;
+    font-size: 1.75rem;
     color: ${({ colorSchema, theme }) =>
       theme.colors[colorSchema] || theme.colors.primary};
   }
@@ -35,6 +35,10 @@ const StyledMovies = styled.div`
   @media (min-width: 992px) {
     max-width: 1200px;
     margin: 3rem auto;
+
+    .movies__title {
+      font-size: 2.375rem;
+    }
   }
 `;
 

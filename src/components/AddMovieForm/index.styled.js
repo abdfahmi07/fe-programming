@@ -17,8 +17,7 @@ const StyledAddMovieForm = styled.div`
       text-align: center;
       color: ${({ colorSchema, theme }) =>
         theme.colors[colorSchema] || theme.colors.primary};
-      font-size: 2.44rem;
-      margin: 1rem 0;
+      font-size: 1.75rem;
     }
 
     .form {
@@ -74,6 +73,10 @@ const StyledAddMovieForm = styled.div`
 
       .movie__form__right {
         flex-basis: 40%;
+
+        .movie__form__title {
+          font-size: 2.375rem;
+        }
       }
     }
   }
