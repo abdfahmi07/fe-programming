@@ -10,6 +10,7 @@ function Detail() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getRecommendationMovies();
   }, [id]);
 
