@@ -9,8 +9,8 @@ const ENDPOINTS = {
   RECOMMENDATION: (id) => {
     return `${BASE_URL}/movie/${id}/recommendations?api_key=${API_KEY}`;
   },
-  DETAIL: (id) => {
-    return `${BASE_URL}/movie/${id}?api_key=${API_KEY}&append_to_response=videos`;
+  DETAIL: (id, otherResponse = ["videos"]) => {
+    return `${BASE_URL}/movie/${id}?api_key=${API_KEY}&append_to_response=${otherResponse}`;
   },
 };
 
