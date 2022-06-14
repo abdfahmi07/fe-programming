@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import StyledMovie from "./index.styled";
 
-function Movie(props) {
-  const { id, title, year, release_date, poster, poster_path } = props.movie;
+function Movie({ movie }) {
+  const { id, title, year, release_date, poster, poster_path } = movie;
 
   return (
     <StyledMovie>

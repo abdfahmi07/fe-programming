@@ -2,9 +2,7 @@ import { useSelector } from "react-redux";
 import Movie from "../Movie";
 import StyledMovies from "./index.styled";
 
-function Movies(props) {
-  const { title } = props;
-
+function Movies({ title }) {
   const movies = useSelector((store) => store.moviesReducer.movies);
 
   return (

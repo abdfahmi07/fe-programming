@@ -6,8 +6,7 @@ import StyledHero from "./index.styled";
 import ENDPOINTS from "../../utils/constant/endpoints";
 import { Link } from "react-router-dom";
 
-function Hero(props) {
-  const { endpoint } = props;
+function Hero({ endpoint }) {
   const [movie, setMovie] = useState("");
 
   const movieGenres =
