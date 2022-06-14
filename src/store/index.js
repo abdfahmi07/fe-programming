@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import moviesReducer from "../features/moviesSlice";
-
+import featuresReducer from "../features/featuresSlice";
 /**
  * Buat store
  * Digunakan membuat state global
@@ -11,6 +11,7 @@ import moviesReducer from "../features/moviesSlice";
 const store = configureStore({
   reducer: {
     moviesReducer,
+    featuresReducer,
   },
 });
 
