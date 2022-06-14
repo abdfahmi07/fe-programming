@@ -5,11 +5,13 @@ import Hero from "../../components/Hero";
 import Movies from "../../components/Movies";
 import { updateMovie } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
+import { openMenu } from "../../features/featuresSlice";
 
 function PopularMovie() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(openMenu(false));
     getPopularMovies();
   }, []);
 

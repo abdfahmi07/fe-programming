@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import DetailMovie from "../../components/DetailMovie";
 import Movies from "../../components/Movies";
+import { openMenu } from "../../features/featuresSlice";
 import { updateMovie } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
 
@@ -13,6 +14,7 @@ function Detail() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(openMenu(false));
     getRecommendationMovies();
   }, [id]);
 

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Hero from "../../components/Hero";
 import Movies from "../../components/Movies";
+import { openMenu } from "../../features/featuresSlice";
 import { updateMovie } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
 
@@ -10,6 +11,7 @@ function NowPlayingMovie() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(openMenu(false));
     getNowPlayingMovies();
   }, []);
 
