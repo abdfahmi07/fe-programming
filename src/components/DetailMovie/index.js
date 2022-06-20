@@ -34,7 +34,10 @@ function DetailMovie() {
     <StyledDetailMovie colorSchema="primary">
       <div className="poster">
         <img
-          src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+          src={
+            movie.poster_path &&
+            `https://image.tmdb.org/t/p/w300/${movie.poster_path}`
+          }
           alt={movie.title}
         />
       </div>
