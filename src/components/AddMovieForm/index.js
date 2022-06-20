@@ -17,12 +17,15 @@ function AddMovieForm() {
     type: "",
     poster: "",
   });
-  const [isTitleError, setIsTitleError] = useState(false);
-  const [isYearError, setIsYearError] = useState(false);
-  const [isTypeError, setIsTypeError] = useState(false);
-  const [isPosterError, setIsPosterError] = useState(false);
+  const [isError, setIsError] = useState({
+    isTitleError: false,
+    isYearError: false,
+    isTypeError: false,
+    isPosterError: false,
+  });
 
   const { title, year, type, poster } = formData;
+  const { isTitleError, isYearError, isTypeError, isPosterError } = isError;
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -35,25 +38,44 @@ function AddMovieForm() {
 
   function validate() {
     if (title === "") {
-      setIsTitleError(true);
+      setIsError({
+        ...isError,
+        isTitleError: true,
+      });
+
       return false;
     } else if (year === "") {
-      setIsTitleError(false);
-      setIsYearError(true);
+      setIsError({
+        ...isError,
+        isTitleError: false,
+        isYearError: true,
+      });
+
       return false;
     } else if (type === "") {
-      setIsYearError(false);
-      setIsTypeError(true);
+      setIsError({
+        ...isError,
+        isYearError: false,
+        isTypeError: true,
+      });
+
       return false;
     } else if (poster === "") {
-      setIsTypeError(false);
-      setIsPosterError(true);
+      setIsError({
+        ...isError,
+        isTypeError: false,
+        isPosterError: true,
+      });
+
       return false;
     } else {
-      setIsTitleError(false);
-      setIsYearError(false);
-      setIsTypeError(false);
-      setIsPosterError(false);
+      setIsError({
+        isTitleError: false,
+        isYearError: false,
+        isTypeError: false,
+        isPosterError: false,
+      });
+
       return true;
     }
   }
