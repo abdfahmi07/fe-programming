@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import Hero from "../../components/Hero";
 import Movies from "../../components/Movies";
-import { updateMovie } from "../../features/moviesSlice";
+import { updateMovies } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
 import { openMenu } from "../../features/featuresSlice";
 
@@ -17,7 +17,7 @@ function PopularMovie() {
 
   async function getPopularMovies() {
     const response = await axios(ENDPOINTS.POPULAR);
-    dispatch(updateMovie(response.data.results));
+    dispatch(updateMovies(response.data.results));
   }
 
   return (

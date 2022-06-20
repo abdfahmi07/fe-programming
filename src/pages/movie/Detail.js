@@ -3,10 +3,10 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import DetailMovie from "../../components/DetailMovie";
-import Movies from "../../components/Movies";
 import { openMenu } from "../../features/featuresSlice";
-import { updateMovie } from "../../features/moviesSlice";
+import { updateMovies } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
+import Movies from "../../components/Movies";
 
 function Detail() {
   const { id } = useParams();
@@ -20,7 +20,7 @@ function Detail() {
 
   async function getRecommendationMovies() {
     const response = await axios(ENDPOINTS.RECOMMENDATION(id));
-    dispatch(updateMovie(response.data.results));
+    dispatch(updateMovies(response.data.results));
   }
 
   return (

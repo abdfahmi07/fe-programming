@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import Hero from "../../components/Hero";
 import Movies from "../../components/Movies";
 import { openMenu } from "../../features/featuresSlice";
-import { updateMovie } from "../../features/moviesSlice";
+import { updateMovies } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
 
 function NowPlayingMovie() {
@@ -17,7 +17,7 @@ function NowPlayingMovie() {
 
   async function getNowPlayingMovies() {
     const response = await axios(ENDPOINTS.NOW_PLAYING);
-    dispatch(updateMovie(response.data.results));
+    dispatch(updateMovies(response.data.results));
   }
 
   return (
