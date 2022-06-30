@@ -6,11 +6,14 @@ const ENDPOINTS = {
   NOW_PLAYING: `${BASE_URL}/movie/now_playing?api_key=${API_KEY}`,
   TOP_RATED: `${BASE_URL}/movie/top_rated?api_key=${API_KEY}`,
   HERO: `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`,
-  RECOMMENDATION: (id) => {
+  RECOMMENDATION(id) {
     return `${BASE_URL}/movie/${id}/recommendations?api_key=${API_KEY}`;
   },
-  DETAIL: (id, otherResponse = ["videos"]) => {
+  DETAIL(id, otherResponse = ["videos"]) {
     return `${BASE_URL}/movie/${id}?api_key=${API_KEY}&append_to_response=${otherResponse}`;
+  },
+  SEARCH_MOVIE(query) {
+    return `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`;
   },
 };
 
