@@ -25,6 +25,7 @@ const StyledMovie = styled.div`
       flex-direction: column;
       justify-content: space-between;
       padding: 0.625rem 1rem;
+      overflow-y: auto;
 
       .movie__title {
         color: ${({ colorSchema, theme }) =>
