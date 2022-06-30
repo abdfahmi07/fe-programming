@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const StyledDetailMovie = styled.div`
-  // Mobile Screen
   margin: 3rem 1rem;
   display: flex;
   flex-direction: column;
@@ -11,7 +10,7 @@ const StyledDetailMovie = styled.div`
 
   .poster {
     img {
-      border-radius: 25px;
+      border-radius: 15px;
       max-width: 100%;
       height: auto;
     }
@@ -61,7 +60,6 @@ const StyledDetailMovie = styled.div`
     margin-right: 10px;
   }
 
-  // Tablet
   @media screen and (min-width: 768px) {
     flex-direction: row;
     text-align: left;
@@ -82,9 +80,8 @@ const StyledDetailMovie = styled.div`
     }
   }
 
-  // Laptop
   @media screen and (min-width: 992px) {
-    margin: 5rem 1rem;
+    margin: 4rem 1rem;
 
     h2 {
       font-size: 2.375rem;

@@ -7,6 +7,7 @@ const StyledNavbar = styled.div`
     theme.colors[bgColor] || theme.colors.primary};
   padding: 1rem;
   color: #fff;
+  z-index: 999;
 
   .navbar {
     display: flex;
@@ -86,11 +87,11 @@ const StyledNavbar = styled.div`
       box-shadow: 0px 2px 5px #e5e5e5;
       padding: 0 1rem;
 
-      .navbar__search__icon {
+      .search__icon {
         color: #000;
       }
 
-      input {
+      .search__input {
         background-color: transparent;
         border: none;
         height: 35px;

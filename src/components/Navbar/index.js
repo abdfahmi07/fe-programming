@@ -79,13 +79,13 @@ function Navbar() {
         {isSearchOpen && (
           <div className="navbar__search__wrapper">
             <FontAwesomeIcon
-              size="md"
-              className="navbar__search__icon"
+              size="sm"
+              className="search__icon"
               icon="fa-solid fa-magnifying-glass"
             />
             <input
               type="text"
-              className="navbar__search__input"
+              className="search__input"
               placeholder="Search movie"
               onKeyUp={searchMovie}
             />

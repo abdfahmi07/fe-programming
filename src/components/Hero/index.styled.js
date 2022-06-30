@@ -59,7 +59,7 @@ const StyledHero = styled.div`
     max-width: 1200px;
 
     .hero {
-      margin: 5rem 1rem;
+      margin: 4rem 1rem;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;

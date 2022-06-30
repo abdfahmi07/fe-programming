@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const StyledMovies = styled.div`
-  /* Small Screen */
   margin: 1rem;
 
   .movies {
@@ -9,7 +8,7 @@ const StyledMovies = styled.div`
   }
 
   .movies__title {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     font-size: 1.75rem;
     color: ${({ colorSchema, theme }) =>
       theme.colors[colorSchema] || theme.colors.primary};
@@ -18,19 +17,18 @@ const StyledMovies = styled.div`
   .movies__container {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
-  /* Medium Screen */
   @media (min-width: 768px) {
     .movies__container {
+      justify-content: flex-start;
       flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: flex-start;
+      gap: 1.5rem;
     }
   }
 
-  /* Large Screen */
   @media (min-width: 992px) {
     max-width: 1200px;
 
