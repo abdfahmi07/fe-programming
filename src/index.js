@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 // Import Porvider: untuk menghubungkan react dan redux
 import { Provider } from "react-redux";
 import "./library/fontawesome";
@@ -16,9 +16,9 @@ ReactDOM.render(
        * Bungkus/Hubungkan aplikasi dengan Browser Router
        * Agar URL browser dapat dimanipulasikan oleh React Router
        */}
-      <BrowserRouter>
+      <HashRouter>
         <App />
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
