@@ -1,6 +1,5 @@
 {
   "name": "movie-database",
-  "homepage": "https://abdfahmi07.github.io/fe-programming",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
