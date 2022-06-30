@@ -28,7 +28,7 @@ const StyledNavbar = styled.div`
     .navbar__menu {
       position: fixed;
       height: 100%;
-      width: 90%;
+      width: 70%;
       z-index: 99;
       left: -999px;
       top: 66px;
