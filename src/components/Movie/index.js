@@ -32,7 +32,7 @@ function Movie({ movie }) {
             <p className="movie__overview">
               {overview &&
                 overview.length >= 100 &&
-                `${overview.substr(0, 90)}...`}
+                `${overview.substr(0, 40)}...`}
             </p>
           )}
         </div>

@@ -30,7 +30,7 @@ const StyledMovie = styled.div`
         color: ${({ colorSchema, theme }) =>
           theme.colors[colorSchema] || theme.colors.primary};
         margin-bottom: 0.3125rem;
-        font-size: 1.125rem;
+        font-size: 1rem;
       }
 
       .movie__date {
@@ -59,6 +59,12 @@ const StyledMovie = styled.div`
           display: block;
           max-width: 100%;
           height: auto;
+        }
+      }
+
+      .movie__info {
+        .movie__title {
+          font-size: 1.125rem;
         }
       }
     }
