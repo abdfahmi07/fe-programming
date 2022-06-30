@@ -27,7 +27,7 @@ function Movie({ movie }) {
             <h5 className="movie__title">{title}</h5>
             <p className="movie__date">{year || release_date?.substr(0, 4)}</p>
           </div>
-          {window.innerWidth <= 425 && (
+          {window.innerWidth < 760 && (
             <p className="movie__overview">
               {overview &&
                 overview.length >= 100 &&
