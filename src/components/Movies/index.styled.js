@@ -5,7 +5,6 @@ const StyledMovies = styled.div`
   margin: 1rem;
 
   .movies {
-    margin: 5rem 0;
     text-align: center;
   }
 
@@ -34,7 +33,6 @@ const StyledMovies = styled.div`
   /* Large Screen */
   @media (min-width: 992px) {
     max-width: 1200px;
-    margin: 3rem auto;
 
     .movies__title {
       font-size: 2.375rem;

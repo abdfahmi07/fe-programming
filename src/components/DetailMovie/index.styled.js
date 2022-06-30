@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledDetailMovie = styled.div`
   // Mobile Screen
-  margin: 1rem;
+  margin: 3rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,6 +84,8 @@ const StyledDetailMovie = styled.div`
 
   // Laptop
   @media screen and (min-width: 992px) {
+    margin: 5rem 1rem;
+
     h2 {
       font-size: 2.375rem;
     }

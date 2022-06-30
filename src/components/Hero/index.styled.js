@@ -7,6 +7,7 @@ const StyledHero = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin: 3rem 0;
 
     .hero__left {
       order: 2;
@@ -58,7 +59,7 @@ const StyledHero = styled.div`
     max-width: 1200px;
 
     .hero {
-      margin: 0 1rem;
+      margin: 5rem 1rem;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
