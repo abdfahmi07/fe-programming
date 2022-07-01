@@ -24,7 +24,7 @@ const StyledMovie = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 0.625rem 1rem;
+      padding: 1rem;
       overflow-y: auto;
 
       .movie__title {

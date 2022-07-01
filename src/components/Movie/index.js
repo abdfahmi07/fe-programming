@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import StyledMovie from "./index.styled";
 import imgNotFound from "../../assets/not-found.jpg";
-import { isMobileRgx } from "../../helpers";
+import { isMobileRgx, toMonthName } from "../../helpers";
 
 function Movie({ movie }) {
   const { id, title, year, release_date, poster, poster_path, overview } =
     movie;
+  const movieReleaseDate = release_date && release_date.split("-");
 
   return (
     <StyledMovie>
@@ -26,7 +27,13 @@ function Movie({ movie }) {
         <div className="movie__info">
           <div>
             <h5 className="movie__title">{title}</h5>
-            <p className="movie__date">{year || release_date?.substr(0, 4)}</p>
+            <p className="movie__date">
+              {year ||
+                (movieReleaseDate &&
+                  `${movieReleaseDate[2]} ${toMonthName(
+                    movieReleaseDate[1]
+                  )}, ${movieReleaseDate[0]}`)}
+            </p>
           </div>
           {isMobileRgx && (
             <p className="movie__overview">
