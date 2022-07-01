@@ -15,7 +15,6 @@ const StyledNavbar = styled.div`
     align-items: center;
 
     .navbar__header {
-      flex-basis: 80%;
       text-align: center;
       order: 2;
       a {
@@ -41,7 +40,7 @@ const StyledNavbar = styled.div`
         list-style: none;
       }
       .navbar__item {
-        margin-bottom: 1rem;
+        margin-bottom: 1.125rem;
         a {
           color: #fff;
         }
@@ -110,11 +109,9 @@ const StyledNavbar = styled.div`
     }
   }
 
-  /* Medium Screen */
   @media screen and (min-width: 768px) {
   }
 
-  /* Large Screen */
   @media screen and (min-width: 992px) {
     padding: 1rem 6rem;
 

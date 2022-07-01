@@ -10,7 +10,6 @@ function Navbar() {
     (store) => store.featuresReducer.isShowSearch
   );
   const dispatch = useDispatch();
-
   const navigation = useNavigate();
 
   function showMenu() {
@@ -88,6 +87,7 @@ function Navbar() {
               className="search__input"
               placeholder="Search movie"
               onKeyUp={searchMovie}
+              autoFocus
             />
           </div>
         )}
