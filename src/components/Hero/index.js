@@ -42,7 +42,11 @@ const Hero = ({ endpoint, type = "MOVIE" }) => {
         <div className="hero__left">
           <h2 className="hero__title">{movie.title || movie.name}</h2>
           <h3 className="hero__genre">{genres}</h3>
-          <p className="hero__description">{movie.overview}</p>
+          <p className="hero__description">
+            {movie.overview &&
+              movie.overview.length >= 100 &&
+              `${movie.overview.substr(0, 150)}...`}
+          </p>
           <Button
             className="hero__btn__trailer"
             colorSchema="primary"
