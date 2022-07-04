@@ -22,14 +22,14 @@ function TopRatedMovie() {
 
   async function getTopRatedMovies() {
     dispatch(setIsLoading(true));
-    const response = await axios(ENDPOINTS.TOP_RATED);
+    const response = await axios(ENDPOINTS.MOVIE.TOP_RATED);
     dispatch(updateMovies(response.data.results));
     dispatch(setIsLoading(false));
   }
 
   return (
     <div>
-      <Hero endpoint={ENDPOINTS.TOP_RATED} />
+      <Hero endpoint={ENDPOINTS.MOVIE.TOP_RATED} type="MOVIE" />
       <Movies title="Top Rated Movies" />
     </div>
   );

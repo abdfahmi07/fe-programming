@@ -22,14 +22,14 @@ function PopularMovie() {
 
   async function getPopularMovies() {
     dispatch(setIsLoading(true));
-    const response = await axios(ENDPOINTS.POPULAR);
+    const response = await axios(ENDPOINTS.MOVIE.POPULAR);
     dispatch(updateMovies(response.data.results));
     dispatch(setIsLoading(false));
   }
 
   return (
     <div>
-      <Hero endpoint={ENDPOINTS.POPULAR} />
+      <Hero endpoint={ENDPOINTS.MOVIE.POPULAR} type="MOVIE" />
       <Movies title="Popular Movies" />
     </div>
   );

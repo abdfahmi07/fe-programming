@@ -22,14 +22,14 @@ function NowPlayingMovie() {
 
   async function getNowPlayingMovies() {
     dispatch(setIsLoading(true));
-    const response = await axios(ENDPOINTS.NOW_PLAYING);
+    const response = await axios(ENDPOINTS.MOVIE.NOW_PLAYING);
     dispatch(updateMovies(response.data.results));
     dispatch(setIsLoading(false));
   }
 
   return (
     <div>
-      <Hero endpoint={ENDPOINTS.NOW_PLAYING} />
+      <Hero endpoint={ENDPOINTS.MOVIE.NOW_PLAYING} type="MOVIE" />
       <Movies title="Now Playing Movies" />
     </div>
   );

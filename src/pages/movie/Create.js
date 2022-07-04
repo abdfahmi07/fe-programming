@@ -15,7 +15,7 @@ function CreateMovie() {
 
   return (
     <div>
-      <Hero endpoint={ENDPOINTS.HERO} />
+      <Hero endpoint={ENDPOINTS.MOVIE.HERO} type="MOVIE" />
       <AddMovieForm />
     </div>
   );

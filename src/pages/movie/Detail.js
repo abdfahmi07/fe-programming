@@ -12,7 +12,7 @@ import { updateMovies } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
 import Movies from "../../components/Movies";
 
-function Detail() {
+function DetailMovies() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -25,17 +25,17 @@ function Detail() {
 
   async function getRecommendationMovies() {
     dispatch(setIsLoading(true));
-    const response = await axios(ENDPOINTS.RECOMMENDATION(id));
+    const response = await axios(ENDPOINTS.MOVIE.RECOMMENDATION(id));
     dispatch(updateMovies(response.data.results));
     dispatch(setIsLoading(false));
   }
 
   return (
     <>
-      <DetailMovie />
+      <DetailMovie type="MOVIE" />
       <Movies title="Recommendation Movies" />
     </>
   );
 }
 
-export default Detail;
+export default DetailMovies;
