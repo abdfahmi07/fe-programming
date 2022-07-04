@@ -5,6 +5,14 @@ import {
   faCircleInfo,
   faMagnifyingGlass,
   faXmark,
+  faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faPlay, faInfo, faCircleInfo, faMagnifyingGlass, faXmark);
+library.add(
+  faPlay,
+  faInfo,
+  faCircleInfo,
+  faMagnifyingGlass,
+  faXmark,
+  faCaretDown
+);
