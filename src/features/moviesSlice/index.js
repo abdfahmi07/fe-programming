@@ -9,15 +9,18 @@ import data from "../../utils/constant/data";
 const moviesSlice = createSlice({
   name: "Movies Slice",
   initialState: {
+    movie: "",
     movies: data,
   },
   reducers: {
     addMovie(state, action) {
       state.movies.push(action.payload);
     },
-    deleteMovie() {},
     updateMovies(state, action) {
       state.movies = action.payload;
+    },
+    updateMovie(state, action) {
+      state.movie = action.payload;
     },
   },
 });
@@ -30,7 +33,7 @@ const moviesSlice = createSlice({
  */
 
 const moviesReducer = moviesSlice.reducer;
-const { addMovie, deleteMovie, updateMovies } = moviesSlice.actions;
+const { addMovie, updateMovies, updateMovie } = moviesSlice.actions;
 
 export default moviesReducer;
-export { addMovie, deleteMovie, updateMovies };
+export { addMovie, updateMovies, updateMovie };
