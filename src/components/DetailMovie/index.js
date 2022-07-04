@@ -6,14 +6,16 @@ import Button from "../ui/Button";
 import StyledDetailMovie from "./index.styled";
 import ENDPOINTS from "../../utils/constant/endpoints";
 
-function DetailMovie() {
+function DetailMovie({ type = "MOVIE" }) {
   const { id } = useParams();
   const [movie, setMovie] = useState("");
-  const movieGenres =
-    movie && movie.genres.map((genre) => genre.name).join(", ");
-  const movieTrailer =
+
+  const genres = movie && movie.genres.map((genre) => genre.name).join(", ");
+  const trailer =
     movie && `https://www.youtube.com/watch?v=${movie.videos.results[0]?.key}`;
-  const movieReleaseYear = movie && movie.release_date.substr(0, 4);
+  const releaseYear =
+    (movie && movie.release_date && movie.release_date.substr(0, 4)) ||
+    (movie && movie.first_air_date && movie.first_air_date.substr(0, 4));
   const watchProviders =
     movie && movie["watch/providers"].results?.ID?.flatrate;
   const watchLink = movie && movie["watch/providers"].results?.ID?.link;
@@ -24,7 +26,7 @@ function DetailMovie() {
 
   async function getDetailMovie() {
     const response = await axios(
-      ENDPOINTS.DETAIL(id, ["videos", "credits", "watch/providers"])
+      ENDPOINTS[type].DETAIL(id, ["videos", "credits", "watch/providers"])
     );
 
     setMovie(response.data);
@@ -36,16 +38,17 @@ function DetailMovie() {
         <img
           src={
             movie.poster_path &&
+            movie.poster_path &&
             `https://image.tmdb.org/t/p/w300/${movie.poster_path}`
           }
-          alt={movie.title}
+          alt={movie.title || movie.name}
         />
       </div>
       <div className="info">
         <h2>
-          {movie.title} {`(${movieReleaseYear})`}
+          {movie.title || movie.name} {`(${releaseYear})`}
         </h2>
-        <h3>{movieGenres}</h3>
+        <h3>{genres}</h3>
         <p>{movie.overview}</p>
         {watchProviders && (
           <div className="watch__providers">
@@ -64,12 +67,7 @@ function DetailMovie() {
             </div>
           </div>
         )}
-        <Button
-          colorSchema="primary"
-          as="a"
-          href={movieTrailer}
-          target="_blank"
-        >
+        <Button colorSchema="primary" as="a" href={trailer} target="_blank">
           <FontAwesomeIcon className="icon__detail" icon="fa-solid fa-play" />
           Watch Trailer
         </Button>

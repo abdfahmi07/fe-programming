@@ -36,13 +36,38 @@ const StyledNavbar = styled.div`
       padding: 1rem;
       transition: ease 0.3s;
 
-      .navbar__list {
+      .navbar__list,
+      .navbar__sublist {
         list-style: none;
       }
       .navbar__item {
         margin-bottom: 1.125rem;
-        a {
-          color: #fff;
+
+        .item__title {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          .icon {
+            transition: 0.3s;
+          }
+
+          .title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+          }
+        }
+
+        .navbar__sublist {
+          margin-top: 0.5rem;
+          .navbar__subitem {
+            margin-bottom: 0.3125rem;
+            a {
+              font-size: 0.875rem;
+              color: #fff;
+            }
+          }
         }
       }
     }
@@ -131,9 +156,40 @@ const StyledNavbar = styled.div`
 
         .navbar__list {
           display: flex;
+          position: relative;
 
           .navbar__item {
             margin: 0 1rem;
+
+            .title {
+              margin-bottom: 0;
+            }
+
+            .navbar__sublist {
+              position: absolute;
+              background-color: #fff;
+              width: 12rem;
+              height: auto;
+              border-radius: 10px;
+              border: 1px solid #ebebeb;
+              top: 35px;
+              overflow: hidden;
+              padding: 0.5rem 0;
+
+              .navbar__subitem {
+                margin-bottom: 0;
+
+                &:hover {
+                  background-color: #f2f2f2;
+                }
+
+                a {
+                  display: block;
+                  padding: 0.3125rem 1rem;
+                  color: #36404e;
+                }
+              }
+            }
           }
         }
       }

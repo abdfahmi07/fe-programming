@@ -1,17 +1,19 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 import StyledHero from "./index.styled";
 import ENDPOINTS from "../../utils/constant/endpoints";
-import { Link } from "react-router-dom";
+import { updateMovie } from "../../features/moviesSlice";
 
-function Hero({ endpoint }) {
-  const [movie, setMovie] = useState("");
+const Hero = ({ endpoint, type = "MOVIE" }) => {
+  const movie = useSelector((store) => store.moviesReducer.movie);
+  const dispatch = useDispatch();
 
-  const movieGenres =
-    movie && movie.genres.map((genre) => genre.name).join(", ");
-  const movieTrailer =
+  const genres = movie && movie.genres.map((genre) => genre.name).join(", ");
+  const trailer =
     movie && `https://www.youtube.com/watch?v=${movie.videos.results[0]?.key}`;
 
   useEffect(() => {
@@ -29,30 +31,30 @@ function Hero({ endpoint }) {
     const bannerMovie = await getBannerMovies();
     const movieId = bannerMovie.id;
 
-    const response = await axios(ENDPOINTS.DETAIL(movieId));
+    const response = await axios(ENDPOINTS[type].DETAIL(movieId));
 
-    setMovie(response.data);
+    dispatch(updateMovie(response.data));
   }
 
   return (
     <StyledHero colorSchema="primary">
       <section className="hero">
         <div className="hero__left">
-          <h2 className="hero__title">{movie.title}</h2>
-          <h3 className="hero__genre">{movieGenres}</h3>
+          <h2 className="hero__title">{movie.title || movie.name}</h2>
+          <h3 className="hero__genre">{genres}</h3>
           <p className="hero__description">{movie.overview}</p>
           <Button
             className="hero__btn__trailer"
             colorSchema="primary"
             size="md"
             as="a"
-            href={movieTrailer}
+            href={trailer}
             target="_blank"
           >
             <FontAwesomeIcon className="hero__icon" icon="fa-solid fa-play" />
             Watch Trailer
           </Button>
-          <Link to={`/movie/${movie.id}`}>
+          <Link to={movie.title ? `/movie/${movie.id}` : `/tv/${movie.id}`}>
             <Button colorSchema="primary" variant="outline" size="md">
               <FontAwesomeIcon
                 icon="fa-solid fa-info"
@@ -75,6 +77,6 @@ function Hero({ endpoint }) {
       </section>
     </StyledHero>
   );
-}
+};
 
 export default Hero;

@@ -4,13 +4,24 @@ import imgNotFound from "../../assets/not-found.jpg";
 import { isMobileRgx, toMonthName } from "../../helpers";
 
 function Movie({ movie }) {
-  const { id, title, year, release_date, poster, poster_path, overview } =
-    movie;
-  const movieReleaseDate = release_date && release_date.split("-");
+  const {
+    id,
+    title,
+    name,
+    year,
+    release_date,
+    first_air_date,
+    poster,
+    poster_path,
+    overview,
+  } = movie;
+  const movieReleaseDate =
+    (release_date && release_date.split("-")) ||
+    (first_air_date && first_air_date.split("-"));
 
   return (
     <StyledMovie>
-      <Link to={`/movie/${id}`} className="movie">
+      <Link to={title ? `/movie/${id}` : `/tv/${id}`} className="movie">
         <div className="movie__thumbnail">
           <img
             className="movie__image"
@@ -26,7 +37,7 @@ function Movie({ movie }) {
         </div>
         <div className="movie__info">
           <div>
-            <h5 className="movie__title">{title}</h5>
+            <h5 className="movie__title">{title || name}</h5>
             <p className="movie__date">
               {year ||
                 (movieReleaseDate &&

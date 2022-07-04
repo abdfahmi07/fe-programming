@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { openMenu, openSearch } from "../../features/featuresSlice";
@@ -11,6 +12,13 @@ function Navbar() {
   );
   const dispatch = useDispatch();
   const navigation = useNavigate();
+
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState({
+    film: false,
+    tvShow: false,
+  });
+
+  const { film, tvShow } = isSubMenuOpen;
 
   function showMenu() {
     dispatch(openMenu(!isMenuOpen));
@@ -26,6 +34,20 @@ function Navbar() {
     }
   }
 
+  function openFilmMenu() {
+    setIsSubMenuOpen({
+      ...isSubMenuOpen,
+      film: !film,
+    });
+  }
+
+  function openTVShowMenu() {
+    setIsSubMenuOpen({
+      ...isSubMenuOpen,
+      tvShow: !tvShow,
+    });
+  }
+
   return (
     <StyledNavbar bgColor="primary">
       <nav className="navbar">
@@ -37,23 +59,56 @@ function Navbar() {
         <div className={`navbar__menu ${isMenuOpen && "active"}`}>
           <ul className="navbar__list">
             <li className="navbar__item">
-              <Link to="/movie/popular">Popular</Link>
+              <div onClick={openFilmMenu} className="item__title">
+                <h3 className="title">Film</h3>
+                <FontAwesomeIcon
+                  className="icon"
+                  style={film && { transform: "rotate(180deg)" }}
+                  icon="fa-solid fa-caret-down"
+                />
+              </div>
+              <ul className={`navbar__sublist ${!film && "hide"}`}>
+                <li className="navbar__subitem">
+                  <Link to="/movie/popular">Popular</Link>
+                </li>
+                <li className="navbar__subitem">
+                  <Link to="/movie/top-rated">Top Rated</Link>
+                </li>
+                <li className="navbar__subitem">
+                  <Link to="/movie/upcoming">Upcoming</Link>
+                </li>
+                <li className="navbar__subitem">
+                  <Link to="/movie/now-playing">Now Playing</Link>
+                </li>
+              </ul>
             </li>
             <li className="navbar__item">
-              <Link to="/movie/now">Now Playing</Link>
-            </li>
-            <li className="navbar__item">
-              <Link to="/movie/top">Top Rated</Link>
-            </li>
-            <li className="navbar__item">
-              <Link to="/movie/create">Add Movie</Link>
+              <div onClick={openTVShowMenu} className="item__title">
+                <h3 className="title">TV Shows</h3>
+                <FontAwesomeIcon
+                  className="icon"
+                  style={tvShow && { transform: "rotate(180deg)" }}
+                  icon="fa-solid fa-caret-down"
+                />
+              </div>
+              <ul className={`navbar__sublist ${!tvShow && "hide"}`}>
+                <li className="navbar__subitem">
+                  <Link to="/tv/popular">Popular</Link>
+                </li>
+                <li className="navbar__subitem">
+                  <Link to="/tv/top-rated">Top Rated</Link>
+                </li>
+                <li className="navbar__subitem">
+                  <Link to="/tv/on-the-air">On The Air</Link>
+                </li>
+                <li className="navbar__subitem">
+                  <Link to="/tv/airing-today">Airing Today</Link>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
-        <div
-          className={`navbar__toggle ${isMenuOpen && "open"}`}
-          onClick={showMenu}
-        >
+        <div className="navbar__toggle" onClick={showMenu}>
           <span></span>
           <span></span>
           <span></span>
