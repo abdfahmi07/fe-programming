@@ -11,6 +11,7 @@ const moviesSlice = createSlice({
   initialState: {
     movie: "",
     movies: data,
+    movieDetail: "",
   },
   reducers: {
     addMovie(state, action) {
@@ -21,6 +22,9 @@ const moviesSlice = createSlice({
     },
     updateMovie(state, action) {
       state.movie = action.payload;
+    },
+    updateMovieDetail(state, action) {
+      state.movieDetail = action.payload;
     },
   },
 });
@@ -33,7 +37,8 @@ const moviesSlice = createSlice({
  */
 
 const moviesReducer = moviesSlice.reducer;
-const { addMovie, updateMovies, updateMovie } = moviesSlice.actions;
+const { addMovie, updateMovies, updateMovie, updateMovieDetail } =
+  moviesSlice.actions;
 
 export default moviesReducer;
-export { addMovie, updateMovies, updateMovie };
+export { addMovie, updateMovies, updateMovie, updateMovieDetail };
