@@ -1,14 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "../ui/Button";
 import StyledDetailMovie from "./index.styled";
 import ENDPOINTS from "../../utils/constant/endpoints";
+import { useDispatch, useSelector } from "react-redux";
+import { updateMovieDetail } from "../../features/moviesSlice";
 
 function DetailMovie({ type = "MOVIE" }) {
   const { id } = useParams();
-  const [movie, setMovie] = useState("");
+  const movie = useSelector((store) => store.moviesReducer.movieDetail);
+  const dispatch = useDispatch();
 
   const genres = movie && movie.genres.map((genre) => genre.name).join(", ");
   const trailer =
@@ -29,7 +32,7 @@ function DetailMovie({ type = "MOVIE" }) {
       ENDPOINTS[type].DETAIL(id, ["videos", "credits", "watch/providers"])
     );
 
-    setMovie(response.data);
+    dispatch(updateMovieDetail(response.data));
   }
 
   return (

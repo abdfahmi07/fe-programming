@@ -52,6 +52,10 @@ const StyledMovie = styled.div`
     width: 13rem;
     height: auto;
 
+    &:hover {
+      transform: translateY(-10px);
+    }
+
     .movie {
       display: block;
 

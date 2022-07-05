@@ -1,24 +1,54 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
+import { useRef } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { openMenu, openSearch } from "../../features/featuresSlice";
+import {
+  openMenu,
+  openSearch,
+  setIsDropdownFilmOpen,
+  setIsDropdownTvOpen,
+} from "../../features/featuresSlice";
 import StyledNavbar from "./index.styled";
 
 function Navbar() {
+  const dropdownFilm = useRef(null);
+  const dropdownTV = useRef(null);
+
   const isMenuOpen = useSelector((store) => store.featuresReducer.isMenuOpen);
   const isSearchOpen = useSelector(
     (store) => store.featuresReducer.isShowSearch
   );
+  const isDropdownFilmOpen = useSelector(
+    (store) => store.featuresReducer.isDropdownFilmOpen
+  );
+  const isDropdownTVOpen = useSelector(
+    (store) => store.featuresReducer.isDropdownTVOpen
+  );
+
   const dispatch = useDispatch();
   const navigation = useNavigate();
 
-  const [isSubMenuOpen, setIsSubMenuOpen] = useState({
-    film: false,
-    tvShow: false,
-  });
+  function useOutsideClickEvent(ref) {
+    useEffect(() => {
+      function handleClickOutside(e) {
+        if (ref.current && !ref.current.contains(e.target)) {
+          if (ref.current.id === "dropdownFilm") {
+            dispatch(setIsDropdownFilmOpen(false));
+          } else {
+            dispatch(setIsDropdownTvOpen(false));
+          }
+        }
+      }
 
-  const { film, tvShow } = isSubMenuOpen;
+      document.addEventListener("click", handleClickOutside);
+
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    });
+  }
 
   function showMenu() {
     dispatch(openMenu(!isMenuOpen));
@@ -35,18 +65,17 @@ function Navbar() {
   }
 
   function openFilmMenu() {
-    setIsSubMenuOpen({
-      ...isSubMenuOpen,
-      film: !film,
-    });
+    dispatch(setIsDropdownFilmOpen(!isDropdownFilmOpen));
+    dispatch(setIsDropdownTvOpen(false));
   }
 
   function openTVShowMenu() {
-    setIsSubMenuOpen({
-      ...isSubMenuOpen,
-      tvShow: !tvShow,
-    });
+    dispatch(setIsDropdownTvOpen(!isDropdownTVOpen));
+    dispatch(setIsDropdownFilmOpen(false));
   }
+
+  useOutsideClickEvent(dropdownFilm);
+  useOutsideClickEvent(dropdownTV);
 
   return (
     <StyledNavbar bgColor="primary">
@@ -59,15 +88,22 @@ function Navbar() {
         <div className={`navbar__menu ${isMenuOpen && "active"}`}>
           <ul className="navbar__list">
             <li className="navbar__item">
-              <div onClick={openFilmMenu} className="item__title">
+              <div
+                id="dropdownFilm"
+                ref={dropdownFilm}
+                onClick={openFilmMenu}
+                className="item__title"
+              >
                 <h3 className="title">Film</h3>
                 <FontAwesomeIcon
                   className="icon"
-                  style={film && { transform: "rotate(180deg)" }}
+                  style={isDropdownFilmOpen && { transform: "rotate(180deg)" }}
                   icon="fa-solid fa-caret-down"
                 />
               </div>
-              <ul className={`navbar__sublist ${!film && "hide"}`}>
+              <ul
+                className={`navbar__sublist ${!isDropdownFilmOpen && "hide"}`}
+              >
                 <li className="navbar__subitem">
                   <Link to="/movie/popular">Popular</Link>
                 </li>
@@ -83,15 +119,20 @@ function Navbar() {
               </ul>
             </li>
             <li className="navbar__item">
-              <div onClick={openTVShowMenu} className="item__title">
+              <div
+                id="dropdownTV"
+                ref={dropdownTV}
+                onClick={openTVShowMenu}
+                className="item__title"
+              >
                 <h3 className="title">TV Shows</h3>
                 <FontAwesomeIcon
                   className="icon"
-                  style={tvShow && { transform: "rotate(180deg)" }}
+                  style={isDropdownTVOpen && { transform: "rotate(180deg)" }}
                   icon="fa-solid fa-caret-down"
                 />
               </div>
-              <ul className={`navbar__sublist ${!tvShow && "hide"}`}>
+              <ul className={`navbar__sublist ${!isDropdownTVOpen && "hide"}`}>
                 <li className="navbar__subitem">
                   <Link to="/tv/popular">Popular</Link>
                 </li>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledDetailMovie = styled.div`
-  margin: 3rem 1rem;
+  margin: 3rem 1rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,7 +81,7 @@ const StyledDetailMovie = styled.div`
   }
 
   @media screen and (min-width: 992px) {
-    margin: 4rem 1rem;
+    margin: 4rem 1rem 2rem 1rem;
 
     h2 {
       font-size: 2.375rem;

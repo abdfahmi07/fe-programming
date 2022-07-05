@@ -172,7 +172,7 @@ const StyledNavbar = styled.div`
               height: auto;
               border-radius: 10px;
               border: 1px solid #ebebeb;
-              top: 35px;
+              top: 30px;
               overflow: hidden;
               padding: 0.5rem 0;
 
