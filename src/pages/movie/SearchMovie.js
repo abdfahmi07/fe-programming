@@ -8,6 +8,8 @@ import { updateMovies } from "../../features/moviesSlice";
 import {
   openMenu,
   openSearch,
+  setIsDropdownFilmOpen,
+  setIsDropdownTvOpen,
   setIsLoading,
 } from "../../features/featuresSlice";
 
@@ -18,6 +20,8 @@ const SearchMovie = () => {
   useEffect(() => {
     dispatch(openSearch(false));
     dispatch(openMenu(false));
+    dispatch(setIsDropdownFilmOpen(false));
+    dispatch(setIsDropdownTvOpen(false));
     getMovieSearch();
   }, [query]);
 

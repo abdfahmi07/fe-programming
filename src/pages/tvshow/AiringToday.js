@@ -8,6 +8,7 @@ import ENDPOINTS from "../../utils/constant/endpoints";
 import {
   openMenu,
   openSearch,
+  setIsDropdownTvOpen,
   setIsLoading,
 } from "../../features/featuresSlice";
 
@@ -17,6 +18,7 @@ function AiringTodayTVShow() {
   useEffect(() => {
     dispatch(openSearch(false));
     dispatch(openMenu(false));
+    dispatch(setIsDropdownTvOpen(false));
     getAiringTodayTVShow();
   }, []);
 

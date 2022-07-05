@@ -2,7 +2,12 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import AddMovieForm from "../../components/AddMovieForm";
 import Hero from "../../components/Hero";
-import { openMenu, openSearch } from "../../features/featuresSlice";
+import {
+  openMenu,
+  openSearch,
+  setIsDropdownFilmOpen,
+  setIsDropdownTvOpen,
+} from "../../features/featuresSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
 
 function CreateMovie() {
@@ -11,6 +16,8 @@ function CreateMovie() {
   useEffect(() => {
     dispatch(openSearch(false));
     dispatch(openMenu(false));
+    dispatch(setIsDropdownFilmOpen(false));
+    dispatch(setIsDropdownTvOpen(false));
   }, []);
 
   return (

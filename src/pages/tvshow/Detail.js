@@ -6,11 +6,13 @@ import DetailMovie from "../../components/DetailMovie";
 import {
   openMenu,
   openSearch,
+  setIsDropdownTvOpen,
   setIsLoading,
 } from "../../features/featuresSlice";
 import { updateMovies } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
 import Movies from "../../components/Movies";
+import Cast from "../../components/Cast";
 
 function DetailTVShows() {
   const { id } = useParams();
@@ -20,6 +22,7 @@ function DetailTVShows() {
     window.scrollTo(0, 0);
     dispatch(openSearch(false));
     dispatch(openMenu(false));
+    dispatch(setIsDropdownTvOpen(false));
     getRecommendationTvShows();
   }, [id]);
 
@@ -33,6 +36,7 @@ function DetailTVShows() {
   return (
     <>
       <DetailMovie type="TV_SHOW" />
+      <Cast title="Series" />
       <Movies title="Recommendation TV Shows" />
     </>
   );

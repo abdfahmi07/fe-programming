@@ -6,11 +6,14 @@ import DetailMovie from "../../components/DetailMovie";
 import {
   openMenu,
   openSearch,
+  setIsDropdownFilmOpen,
+  setIsDropdownTvOpen,
   setIsLoading,
 } from "../../features/featuresSlice";
 import { updateMovies } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
 import Movies from "../../components/Movies";
+import Cast from "../../components/Cast";
 
 function DetailMovies() {
   const { id } = useParams();
@@ -20,6 +23,8 @@ function DetailMovies() {
     window.scrollTo(0, 0);
     dispatch(openSearch(false));
     dispatch(openMenu(false));
+    dispatch(setIsDropdownFilmOpen(false));
+    dispatch(setIsDropdownTvOpen(false));
     getRecommendationMovies();
   }, [id]);
 
@@ -33,6 +38,7 @@ function DetailMovies() {
   return (
     <>
       <DetailMovie type="MOVIE" />
+      <Cast title="Movie" />
       <Movies title="Recommendation Movies" />
     </>
   );

@@ -6,6 +6,8 @@ import Movies from "../../components/Movies";
 import {
   openMenu,
   openSearch,
+  setIsDropdownFilmOpen,
+  setIsDropdownTvOpen,
   setIsLoading,
 } from "../../features/featuresSlice";
 import { updateMovies } from "../../features/moviesSlice";
@@ -17,6 +19,7 @@ function TopRatedMovie() {
   useEffect(() => {
     dispatch(openSearch(false));
     dispatch(openMenu(false));
+    dispatch(setIsDropdownFilmOpen(false));
     getTopRatedMovies();
   }, []);
 

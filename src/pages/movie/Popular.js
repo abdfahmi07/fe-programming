@@ -8,6 +8,8 @@ import ENDPOINTS from "../../utils/constant/endpoints";
 import {
   openMenu,
   openSearch,
+  setIsDropdownFilmOpen,
+  setIsDropdownTvOpen,
   setIsLoading,
 } from "../../features/featuresSlice";
 
@@ -17,6 +19,7 @@ function PopularMovie() {
   useEffect(() => {
     dispatch(openSearch(false));
     dispatch(openMenu(false));
+    dispatch(setIsDropdownFilmOpen(false));
     getPopularMovies();
   }, []);
 

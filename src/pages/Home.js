@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateMovies } from "../features/moviesSlice";
-import { openMenu, openSearch } from "../features/featuresSlice";
+import {
+  openMenu,
+  openSearch,
+  setIsDropdownFilmOpen,
+  setIsDropdownTvOpen,
+} from "../features/featuresSlice";
 import ENDPOINTS from "../utils/constant/endpoints";
 import Hero from "../components/Hero";
 import Movies from "../components/Movies";
@@ -13,6 +18,8 @@ function Home() {
   useEffect(() => {
     dispatch(openSearch(false));
     dispatch(openMenu(false));
+    dispatch(setIsDropdownTvOpen(false));
+    dispatch(setIsDropdownFilmOpen(false));
     getLatestMovies();
   }, []);
 
