@@ -6,6 +6,8 @@ const featuresSlice = createSlice({
     isMenuOpen: false,
     isSearchOpen: false,
     isLoading: false,
+    isDropdownFilmOpen: false,
+    isDropdownTVOpen: false,
   },
   reducers: {
     openMenu(state, action) {
@@ -17,11 +19,29 @@ const featuresSlice = createSlice({
     setIsLoading(state, action) {
       state.isLoading = action.payload;
     },
+    setIsDropdownFilmOpen(state, action) {
+      state.isDropdownFilmOpen = action.payload;
+    },
+    setIsDropdownTvOpen(state, action) {
+      state.isDropdownTVOpen = action.payload;
+    },
   },
 });
 
 const featuresReducer = featuresSlice.reducer;
-const { openMenu, openSearch, setIsLoading } = featuresSlice.actions;
+const {
+  openMenu,
+  openSearch,
+  setIsLoading,
+  setIsDropdownFilmOpen,
+  setIsDropdownTvOpen,
+} = featuresSlice.actions;
 
 export default featuresReducer;
-export { openMenu, openSearch, setIsLoading };
+export {
+  openMenu,
+  openSearch,
+  setIsLoading,
+  setIsDropdownFilmOpen,
+  setIsDropdownTvOpen,
+};
