@@ -6,6 +6,8 @@ import {
   faMagnifyingGlass,
   faXmark,
   faCaretDown,
+  faChevronLeft,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -14,5 +16,7 @@ library.add(
   faCircleInfo,
   faMagnifyingGlass,
   faXmark,
-  faCaretDown
+  faCaretDown,
+  faChevronLeft,
+  faChevronRight
 );
