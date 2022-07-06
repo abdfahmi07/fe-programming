@@ -4,10 +4,18 @@ const BASE_URL = "https://api.themoviedb.org/3";
 const ENDPOINTS = {
   MOVIE: {
     LATEST: `${BASE_URL}/movie/latest?api_key=${API_KEY}`,
-    POPULAR: `${BASE_URL}/movie/popular?api_key=${API_KEY}`,
-    NOW_PLAYING: `${BASE_URL}/movie/now_playing?api_key=${API_KEY}`,
-    TOP_RATED: `${BASE_URL}/movie/top_rated?api_key=${API_KEY}`,
-    UPCOMING: `${BASE_URL}/movie/upcoming?api_key=${API_KEY}`,
+    POPULAR(pageNumber = 1) {
+      return `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${pageNumber}`;
+    },
+    NOW_PLAYING(pageNumber = 1) {
+      return `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&page=${pageNumber}`;
+    },
+    TOP_RATED(pageNumber = 1) {
+      return `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&page=${pageNumber}`;
+    },
+    UPCOMING(pageNumber = 1) {
+      return `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&page=${pageNumber}`;
+    },
     HERO: `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`,
     RECOMMENDATION(id) {
       return `${BASE_URL}/movie/${id}/recommendations?api_key=${API_KEY}`;
