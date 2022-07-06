@@ -23,8 +23,11 @@ function Movie({ movie }) {
 
   return (
     <StyledMovie>
-      <Link to={title ? `/movie/${id}` : `/tv/${id}`} className="movie">
-        <div className="movie__thumbnail">
+      <div className="movie">
+        <Link
+          to={title ? `/movie/${id}` : `/tv/${id}`}
+          className="movie__thumbnail"
+        >
           <img
             className="movie__image"
             src={
@@ -38,7 +41,7 @@ function Movie({ movie }) {
             }
             alt="movie"
           />
-        </div>
+        </Link>
         <div className="movie__info">
           <div>
             <h5 className="movie__title">{title || name}</h5>
@@ -59,7 +62,7 @@ function Movie({ movie }) {
             </p>
           )}
         </div>
-      </Link>
+      </div>
     </StyledMovie>
   );
 }
