@@ -44,14 +44,18 @@ function Movie({ movie }) {
         </Link>
         <div className="movie__info">
           <div>
-            <h5 className="movie__title">{title || name}</h5>
+            <Link to={title ? `/movie/${id}` : `/tv/${id}`}>
+              <h5 className="movie__title">{title || name}</h5>
+            </Link>
             <p className="movie__date">
               {year ||
                 (movieReleaseDate &&
                   `${movieReleaseDate[2]} ${toMonthName(
                     movieReleaseDate[1]
                   )}, ${movieReleaseDate[0]}`) ||
-                `${media_type[0].toUpperCase()}${media_type.substr(1)}`}
+                (media_type &&
+                  `${media_type[0].toUpperCase()}${media_type.substr(1)}`) ||
+                ""}
             </p>
           </div>
           {isMobileRgx && (

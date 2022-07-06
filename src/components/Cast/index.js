@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import StyledCast from "./index.styled";
 import imgNotFound from "../../assets/not-found.jpg";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Cast = ({ title }) => {
   const movie = useSelector((store) => store.moviesReducer.movieDetail);
@@ -11,11 +13,11 @@ const Cast = ({ title }) => {
   return (
     <StyledCast>
       <header className="header">
-        <h3 className="header__title">{title} Cast</h3>
+        <h3 className="header__title">{`${title} Cast`} </h3>
       </header>
-      <div className="cast__wrapper">
-        {movie &&
-          credits.cast.map((cast) => {
+      {movie ? (
+        <div className="cast__wrapper">
+          {credits.cast.map((cast) => {
             const id = nanoid();
 
             return (
@@ -38,7 +40,10 @@ const Cast = ({ title }) => {
               </div>
             );
           })}
-      </div>
+        </div>
+      ) : (
+        <Skeleton height={"200px"} borderRadius={"0.625rem"} enableAnimation />
+      )}
     </StyledCast>
   );
 };

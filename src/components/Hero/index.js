@@ -30,7 +30,6 @@ const Hero = ({ endpoint, type = "MOVIE" }) => {
   async function getDetailMovie() {
     const bannerMovie = await getBannerMovies();
     const movieId = bannerMovie.id;
-
     const response = await axios(ENDPOINTS[type].DETAIL(movieId));
 
     dispatch(updateMovie(response.data));
