@@ -13,6 +13,8 @@ function Movie({ movie }) {
     first_air_date,
     poster,
     poster_path,
+    profile_path,
+    media_type,
     overview,
   } = movie;
   const movieReleaseDate =
@@ -30,6 +32,8 @@ function Movie({ movie }) {
                 ? poster
                 : poster_path
                 ? `https://image.tmdb.org/t/p/w300${poster_path}`
+                : profile_path
+                ? `https://image.tmdb.org/t/p/w300${profile_path}`
                 : imgNotFound
             }
             alt="movie"
@@ -43,7 +47,8 @@ function Movie({ movie }) {
                 (movieReleaseDate &&
                   `${movieReleaseDate[2]} ${toMonthName(
                     movieReleaseDate[1]
-                  )}, ${movieReleaseDate[0]}`)}
+                  )}, ${movieReleaseDate[0]}`) ||
+                `${media_type[0].toUpperCase()}${media_type.substr(1)}`}
             </p>
           </div>
           {isMobileRgx && (

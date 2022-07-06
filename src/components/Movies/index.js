@@ -7,6 +7,8 @@ function Movies({ title, searchQuery }) {
   const movies = useSelector((store) => store.moviesReducer.movies);
   const isLoading = useSelector((store) => store.featuresReducer.isLoading);
 
+  console.log(movies);
+
   return (
     <StyledMovies>
       <section className="movies">

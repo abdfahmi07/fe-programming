@@ -37,7 +37,7 @@ function DetailMovie({ type = "MOVIE" }) {
 
   return (
     <StyledDetailMovie colorSchema="primary">
-      <div className="poster">
+      <div className="movie__poster">
         <img
           src={
             movie.poster_path &&
@@ -47,12 +47,13 @@ function DetailMovie({ type = "MOVIE" }) {
           alt={movie.title || movie.name}
         />
       </div>
-      <div className="info">
-        <h2>
-          {movie.title || movie.name} {`(${releaseYear})`}
+      <div className="movie__info">
+        <h2 className="movie__title">
+          {movie.title || movie.name}{" "}
+          <span className="release__date"> {`(${releaseYear})`} </span>
         </h2>
-        <h3>{genres}</h3>
-        <p>{movie.overview}</p>
+        <h3 className="movie__genres">{genres}</h3>
+        <p className="movie__overview">{movie.overview}</p>
         {watchProviders && (
           <div className="watch__providers">
             <div className="title">

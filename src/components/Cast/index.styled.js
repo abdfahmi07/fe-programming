@@ -34,16 +34,16 @@ const StyledCast = styled.div`
     .cast {
       display: flex;
       flex-direction: column;
-      min-width: 130px;
-      width: 130px;
+      min-width: 120px;
+      width: 120px;
       height: auto;
       box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
       border-radius: 10px;
       overflow: hidden;
 
       a {
-        min-width: 130px;
-        width: 130px;
+        min-width: 120px;
+        width: 120px;
         height: 175px;
         display: block;
 
@@ -81,12 +81,12 @@ const StyledCast = styled.div`
       }
 
       .cast {
-        min-width: 150px;
-        width: 150px;
+        min-width: 140px;
+        width: 140px;
 
         a {
-          min-width: 150px;
-          width: 150px;
+          min-width: 140px;
+          width: 140px;
           height: 200px;
         }
       }
