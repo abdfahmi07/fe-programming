@@ -1,19 +1,21 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Hero from "../../components/Hero";
 import Movies from "../../components/Movies";
+import Pagination from "../../components/Pagination";
 import {
   openMenu,
   openSearch,
+  setCurrentPage,
   setIsDropdownFilmOpen,
-  setIsDropdownTvOpen,
   setIsLoading,
 } from "../../features/featuresSlice";
 import { updateMovies } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
 
 function NowPlayingMovie() {
+  const currentPage = useSelector((store) => store.featuresReducer.currentPage);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,19 +23,41 @@ function NowPlayingMovie() {
     dispatch(openMenu(false));
     dispatch(setIsDropdownFilmOpen(false));
     getNowPlayingMovies();
-  }, []);
+  }, [currentPage]);
 
   async function getNowPlayingMovies() {
     dispatch(setIsLoading(true));
-    const response = await axios(ENDPOINTS.MOVIE.NOW_PLAYING);
+    const response = await axios(ENDPOINTS.MOVIE.NOW_PLAYING(currentPage));
     dispatch(updateMovies(response.data.results));
     dispatch(setIsLoading(false));
   }
 
+  const handlePagination = (number) => {
+    if (number !== currentPage) {
+      dispatch(setCurrentPage(number));
+    }
+  };
+  const handlePrevPage = () => {
+    if (currentPage !== 1) {
+      dispatch(setCurrentPage(currentPage - 1));
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage !== 5) {
+      dispatch(setCurrentPage(currentPage + 1));
+    }
+  };
+
   return (
     <div>
-      <Hero endpoint={ENDPOINTS.MOVIE.NOW_PLAYING} type="MOVIE" />
+      <Hero endpoint={ENDPOINTS.MOVIE.NOW_PLAYING()} type="MOVIE" />
       <Movies title="Now Playing Movies" />
+      <Pagination
+        handleNextPage={handleNextPage}
+        handlePagination={handlePagination}
+        handlePrevPage={handlePrevPage}
+      />
     </div>
   );
 }
