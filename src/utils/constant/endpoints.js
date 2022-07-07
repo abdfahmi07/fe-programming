@@ -25,10 +25,18 @@ const ENDPOINTS = {
     },
   },
   TV_SHOW: {
-    POPULAR: `${BASE_URL}/tv/popular?api_key=${API_KEY}`,
-    ON_THE_AIR: `${BASE_URL}/tv/on_the_air?api_key=${API_KEY}`,
-    TOP_RATED: `${BASE_URL}/tv/top_rated?api_key=${API_KEY}`,
-    AIRING_TODAY: `${BASE_URL}/tv/airing_today?api_key=${API_KEY}`,
+    POPULAR(pageNumber = 1) {
+      return `${BASE_URL}/tv/popular?api_key=${API_KEY}&page=${pageNumber}`;
+    },
+    ON_THE_AIR(pageNumber = 1) {
+      return `${BASE_URL}/tv/on_the_air?api_key=${API_KEY}&page=${pageNumber}`;
+    },
+    TOP_RATED(pageNumber = 1) {
+      return `${BASE_URL}/tv/top_rated?api_key=${API_KEY}&page=${pageNumber}`;
+    },
+    AIRING_TODAY(pageNumber = 1) {
+      return `${BASE_URL}/tv/airing_today?api_key=${API_KEY}&page=${pageNumber}`;
+    },
     RECOMMENDATION(id) {
       return `${BASE_URL}/tv/${id}/recommendations?api_key=${API_KEY}`;
     },
