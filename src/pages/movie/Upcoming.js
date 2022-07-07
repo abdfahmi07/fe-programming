@@ -7,18 +7,23 @@ import Pagination from "../../components/Pagination";
 import {
   openMenu,
   openSearch,
-  setCurrentPage,
   setIsDropdownFilmOpen,
   setIsLoading,
+  setMoviesCurrentPage,
 } from "../../features/featuresSlice";
 import { updateMovies } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
 
 function UpcomingMovie() {
-  const currentPage = useSelector((store) => store.featuresReducer.currentPage);
+  const currentPage = useSelector(
+    (store) => store.featuresReducer.currentPage.movies.upcoming
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setMoviesCurrentPage({ pageNum: 1, type: "popular" }));
+    dispatch(setMoviesCurrentPage({ pageNum: 1, type: "nowPlaying" }));
+    dispatch(setMoviesCurrentPage({ pageNum: 1, type: "topRated" }));
     dispatch(openSearch(false));
     dispatch(openMenu(false));
     dispatch(setIsDropdownFilmOpen(false));
@@ -34,18 +39,22 @@ function UpcomingMovie() {
 
   const handlePagination = (number) => {
     if (number !== currentPage) {
-      dispatch(setCurrentPage(number));
+      dispatch(setMoviesCurrentPage({ pageNum: number, type: "upcoming" }));
     }
   };
   const handlePrevPage = () => {
     if (currentPage !== 1) {
-      dispatch(setCurrentPage(currentPage - 1));
+      dispatch(
+        setMoviesCurrentPage({ pageNum: currentPage - 1, type: "upcoming" })
+      );
     }
   };
 
   const handleNextPage = () => {
     if (currentPage !== 5) {
-      dispatch(setCurrentPage(currentPage + 1));
+      dispatch(
+        setMoviesCurrentPage({ pageNum: currentPage + 1, type: "upcoming" })
+      );
     }
   };
 
@@ -54,6 +63,7 @@ function UpcomingMovie() {
       <Hero endpoint={ENDPOINTS.MOVIE.UPCOMING()} type="MOVIE" />
       <Movies title="Upcoming Movies" />
       <Pagination
+        currentPage={currentPage}
         handleNextPage={handleNextPage}
         handlePagination={handlePagination}
         handlePrevPage={handlePrevPage}

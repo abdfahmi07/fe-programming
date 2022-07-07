@@ -9,14 +9,16 @@ import ENDPOINTS from "../../utils/constant/endpoints";
 import {
   openMenu,
   openSearch,
-  setCurrentPage,
   setIsDropdownFilmOpen,
   setIsLoading,
+  setMoviesCurrentPage,
 } from "../../features/featuresSlice";
 import Pagination from "../../components/Pagination";
 
 function PopularMovie() {
-  const currentPage = useSelector((store) => store.featuresReducer.currentPage);
+  const currentPage = useSelector(
+    (store) => store.featuresReducer.currentPage.movies.popular
+  );
   // const [query, setQuery] = useState("");
   // const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,6 +31,9 @@ function PopularMovie() {
     //   params.delete("page");
     // }
     // navigate({ search: params.toString() });
+    dispatch(setMoviesCurrentPage({ pageNum: 1, type: "nowPlaying" }));
+    dispatch(setMoviesCurrentPage({ pageNum: 1, type: "upcoming" }));
+    dispatch(setMoviesCurrentPage({ pageNum: 1, type: "topRated" }));
     dispatch(openSearch(false));
     dispatch(openMenu(false));
     dispatch(setIsDropdownFilmOpen(false));
@@ -44,26 +49,31 @@ function PopularMovie() {
 
   const handlePagination = (number) => {
     if (number !== currentPage) {
-      dispatch(setCurrentPage(number));
+      dispatch(setMoviesCurrentPage({ pageNum: number, type: "popular" }));
     }
   };
   const handlePrevPage = () => {
     if (currentPage !== 1) {
-      dispatch(setCurrentPage(currentPage - 1));
+      dispatch(
+        setMoviesCurrentPage({ pageNum: currentPage - 1, type: "popular" })
+      );
     }
   };
 
   const handleNextPage = () => {
     if (currentPage !== 5) {
-      dispatch(setCurrentPage(currentPage + 1));
+      dispatch(
+        setMoviesCurrentPage({ pageNum: currentPage + 1, type: "popular" })
+      );
     }
   };
-
+  console.log(currentPage);
   return (
     <div>
       <Hero endpoint={ENDPOINTS.MOVIE.POPULAR()} type="MOVIE" />
       <Movies title="Popular Movies" />
       <Pagination
+        currentPage={currentPage}
         handleNextPage={handleNextPage}
         handlePagination={handlePagination}
         handlePrevPage={handlePrevPage}

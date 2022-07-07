@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import DetailMovie from "../../components/DetailMovie";
 import {
@@ -16,6 +16,8 @@ import Cast from "../../components/Cast";
 
 function DetailTVShows() {
   const { id } = useParams();
+  const { credits } = useSelector((store) => store.moviesReducer.movieDetail);
+  const movies = useSelector((store) => store.moviesReducer.movies);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,8 +38,8 @@ function DetailTVShows() {
   return (
     <>
       <DetailMovie type="TV_SHOW" />
-      <Cast title="Series" />
-      <Movies title="Recommendation TV Shows" />
+      {credits?.cast.length >= 1 && <Cast title="Series" />}
+      {movies.length >= 1 && <Movies title="Recommendation TV Shows" />}
     </>
   );
 }

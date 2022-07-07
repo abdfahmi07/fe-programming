@@ -10,15 +10,21 @@ import {
   setCurrentPage,
   setIsDropdownFilmOpen,
   setIsLoading,
+  setMoviesCurrentPage,
 } from "../../features/featuresSlice";
 import { updateMovies } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constant/endpoints";
 
 function NowPlayingMovie() {
-  const currentPage = useSelector((store) => store.featuresReducer.currentPage);
+  const currentPage = useSelector(
+    (store) => store.featuresReducer.currentPage.movies.nowPlaying
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setMoviesCurrentPage({ pageNum: 1, type: "popular" }));
+    dispatch(setMoviesCurrentPage({ pageNum: 1, type: "upcoming" }));
+    dispatch(setMoviesCurrentPage({ pageNum: 1, type: "topRated" }));
     dispatch(openSearch(false));
     dispatch(openMenu(false));
     dispatch(setIsDropdownFilmOpen(false));
@@ -34,18 +40,22 @@ function NowPlayingMovie() {
 
   const handlePagination = (number) => {
     if (number !== currentPage) {
-      dispatch(setCurrentPage(number));
+      dispatch(setMoviesCurrentPage({ pageNum: number, type: "nowPlaying" }));
     }
   };
   const handlePrevPage = () => {
     if (currentPage !== 1) {
-      dispatch(setCurrentPage(currentPage - 1));
+      dispatch(
+        setMoviesCurrentPage({ pageNum: currentPage - 1, type: "nowPlaying" })
+      );
     }
   };
 
   const handleNextPage = () => {
     if (currentPage !== 5) {
-      dispatch(setCurrentPage(currentPage + 1));
+      dispatch(
+        setMoviesCurrentPage({ pageNum: currentPage + 1, type: "nowPlaying" })
+      );
     }
   };
 
@@ -54,6 +64,7 @@ function NowPlayingMovie() {
       <Hero endpoint={ENDPOINTS.MOVIE.NOW_PLAYING()} type="MOVIE" />
       <Movies title="Now Playing Movies" />
       <Pagination
+        currentPage={currentPage}
         handleNextPage={handleNextPage}
         handlePagination={handlePagination}
         handlePrevPage={handlePrevPage}
