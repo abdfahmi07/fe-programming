@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const featuresSlice = createSlice({
   name: "Features Slice",
@@ -8,7 +8,20 @@ const featuresSlice = createSlice({
     isLoading: false,
     isDropdownFilmOpen: false,
     isDropdownTVOpen: false,
-    currentPage: 1,
+    currentPage: {
+      movies: {
+        popular: 1,
+        topRated: 1,
+        upcoming: 1,
+        nowPlaying: 1,
+      },
+      tvShows: {
+        popular: 1,
+        topRated: 1,
+        onAir: 1,
+        airingToday: 1,
+      },
+    },
   },
   reducers: {
     openMenu(state, action) {
@@ -26,8 +39,15 @@ const featuresSlice = createSlice({
     setIsDropdownTvOpen(state, action) {
       state.isDropdownTVOpen = action.payload;
     },
-    setCurrentPage(state, action) {
-      state.currentPage = action.payload;
+    setMoviesCurrentPage(state, action) {
+      const { pageNum, type } = action.payload;
+
+      state.currentPage.movies[type] = pageNum;
+    },
+    setTVShowsCurrentPage(state, action) {
+      const { pageNum, type } = action.payload;
+
+      state.currentPage.tvShows[type] = pageNum;
     },
   },
 });
@@ -39,7 +59,8 @@ const {
   setIsLoading,
   setIsDropdownFilmOpen,
   setIsDropdownTvOpen,
-  setCurrentPage,
+  setMoviesCurrentPage,
+  setTVShowsCurrentPage,
 } = featuresSlice.actions;
 
 export default featuresReducer;
@@ -49,5 +70,6 @@ export {
   setIsLoading,
   setIsDropdownFilmOpen,
   setIsDropdownTvOpen,
-  setCurrentPage,
+  setMoviesCurrentPage,
+  setTVShowsCurrentPage,
 };
