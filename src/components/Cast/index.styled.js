@@ -44,7 +44,7 @@ const StyledCast = styled.div`
       a {
         min-width: 120px;
         width: 120px;
-        height: 175px;
+        height: 133px;
         display: block;
 
         .cast__photo {
@@ -81,13 +81,13 @@ const StyledCast = styled.div`
       }
 
       .cast {
-        min-width: 140px;
-        width: 140px;
+        min-width: 138px;
+        width: 138px;
 
         a {
-          min-width: 140px;
-          width: 140px;
-          height: 200px;
+          min-width: 138px;
+          width: 138px;
+          height: 175px;
         }
       }
     }

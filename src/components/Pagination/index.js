@@ -1,9 +1,12 @@
-import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import StyledPagination from "./index.styled";
 
-const Pagination = ({ handlePrevPage, handleNextPage, handlePagination }) => {
-  const currentPage = useSelector((store) => store.featuresReducer.currentPage);
+const Pagination = ({
+  currentPage,
+  handlePrevPage,
+  handleNextPage,
+  handlePagination,
+}) => {
   const pageNumber = [];
 
   for (let i = 1; i <= 5; i++) {

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledPagination = styled.nav`
-  padding: 1rem;
+  padding: 2rem 1rem 1rem;
   display: flex;
   justify-content: center;
 
@@ -40,6 +40,10 @@ const StyledPagination = styled.nav`
       color: #fff;
       cursor: no-drop;
     }
+  }
+
+  @media (min-width: 768px) {
+    padding: 1rem;
   }
 `;
 

@@ -5,6 +5,7 @@ import StyledCast from "./index.styled";
 import imgNotFound from "../../assets/not-found.jpg";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { isMobileRgx } from "../../helpers";
 
 const Cast = ({ title }) => {
   const movie = useSelector((store) => store.moviesReducer.movieDetail);
@@ -27,7 +28,9 @@ const Cast = ({ title }) => {
                     className="cast__photo"
                     src={
                       cast.profile_path
-                        ? `https://image.tmdb.org/t/p/original/${cast.profile_path}`
+                        ? `https://image.tmdb.org/t/p/${
+                            !isMobileRgx ? "w138_and_h175" : "w240_and_h266"
+                          }_face/${cast.profile_path}`
                         : imgNotFound
                     }
                     alt="Name"
